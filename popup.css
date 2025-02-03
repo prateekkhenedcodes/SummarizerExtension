@@ -1,4 +1,7 @@
 body {
+    background-color: #f4f4f4;
+    overflow: auto;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,6 +10,56 @@ body {
     margin: 0;
     background-color: #f4f4f4;
     font-family: Arial, sans-serif;
+    width: 800px;
+    min-height: 600px;
+    padding: 25px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-align: center;
+    display: block;
+}
+
+textarea#inputText {
+    width: 90%;
+    min-height: 20px;
+    max-height: 300px;
+    padding: 15px;
+    border: 2px solid #c1c7c8;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    resize: vertical;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+textarea#inputText:focus {
+    border-color: #3498db;
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+.button-group {
+    display: flex;
+    gap: 25px;
+    margin: 20px 0;
 }
 
 button {
@@ -16,86 +69,99 @@ button {
     border-radius: 25px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold;
     font-style: oblique;
+    font-weight: bold;
     transition: background 0.3s ease;
+    min-width: 150px;
     display: inline-block;
+    align-items: center;
+    justify-content: center;
 }
 
 #summarize {
-    border: 2px solid #0479f6;
-    background-color: #4CAF50;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
     color: white;
+    border: 2px solid #0479f6;
 }
 
 #summarize:hover {
-    background-color: #03f40f;
+    background: linear-gradient(135deg, #45a049, #3d8b40);
+    transform: translateY(-2px);
 }
 
-#summarize:active{
-    background-color: #0c6e21; /* Pressed state */
-    border-color: #0e86fd;
+#summarize:active {
+    transform: translateY(0px);
 }
 
 #flashcards {
-    border: 2px solid #0df615;
-    background-color: #0f5fcf;
+    background: linear-gradient(135deg, #0f5fcf, #0b4d9c);
     color: white;
+    border: 2px solid #0a3d7a;
 }
 
 #flashcards:hover {
-    background-color: #076dfc;
+    background: linear-gradient(135deg, #0b4d9c, #093a6e);
+    transform: translateY(-2px);
 }
 
 #flashcards:active {
-    background-color: #094581; /* Pressed state */
-    border-color: #0df615;
+    transform: translateY(0);
 }
 
 #result {
-    margin-top: 20px;
-    padding: 15px;
-    width: 80%;
-    max-width: 400px;
+    width: 90%;
+    padding: 20px;
     background: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 15px 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
     display: none;
+    line-height: 1.6;
+    border: 1px solid #ecf0f1;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
-#inputText {
-    width: 80%;
-    max-width: 400px;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px; 
+.loading {
+    position: relative;
+    opacity: 0.7;
 }
 
-label {
-    font-size: 18px; 
-    font-weight: bold; 
-    color: #333; 
-    display: block; 
-    margin-bottom: 8px; 
-    text-align: center; 
+.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
-#inputText {
-    width: 80%;
-    max-width: 400px; 
-    padding: 10px; 
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px; 
-    text-align: center;
-    margin: 0 auto 15px auto;
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-#inputText:focus {
-    border-color: #007BFF;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bdc3c7;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #95a5a6;
 }
